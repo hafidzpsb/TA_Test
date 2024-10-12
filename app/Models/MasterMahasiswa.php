@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class MasterMahasiswa extends Model
 {
@@ -15,9 +17,13 @@ class MasterMahasiswa extends Model
         'kelas',
     ];
 
-    public function relasi()
+    public function kurikulum()
     {
         return $this->belongsTo(MasterKurikulum::class, 'user_id', 'user_id');
-        return $this->belongsTo(Nilai::class, 'mahasiswa_id', 'mahasiswa_id');
+    }
+
+    public function nilai()
+    {
+        return $this->hasMany(Nilai::class, 'mahasiswa_id', 'mahasiswa_id');
     }
 }

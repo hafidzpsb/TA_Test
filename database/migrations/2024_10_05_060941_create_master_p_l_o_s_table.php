@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('nama_plo');
             $table->timestamps();
             //Relasi
-
         });
     }
 
