@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MasterIndicatorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/impor_data/master_indikator', function () {
+    return view('impor_data.master_indikator');
+});
+Route::get('/import/master-indikator', [MasterIndicatorController::class, 'showImportForm'])->name('import.master.indikator.form');
+Route::post('/import/master-indikator', [MasterIndicatorController::class, 'import'])->name('import.master.indikator');
